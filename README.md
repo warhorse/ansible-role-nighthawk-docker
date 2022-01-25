@@ -7,7 +7,7 @@ Ansible Nighthawk (Docker)
 ![License](https://img.shields.io/github/license/warhorse/ansible-role-nighthawk-docker)
 ![Commit](https://img.shields.io/github/last-commit/warhorse/ansible-role-nighthawk-docker)
 
-![Nighthawk Logo](./images/nighthawk-logo.png "Nighthawk Logo")
+![Nighthawk Logo](./images/nighthawk_logo.png "Nighthawk Logo")
 
 
 Install Nighthawk (Docker)
