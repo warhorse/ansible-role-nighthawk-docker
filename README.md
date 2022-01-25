@@ -7,7 +7,7 @@ Ansible Nighthawk (Docker)
 ![License](https://img.shields.io/github/license/warhorse/ansible-role-nighthawk-docker)
 ![Commit](https://img.shields.io/github/last-commit/warhorse/ansible-role-nighthawk-docker)
 
-![Neo4j Logo](./images/nighthawk-logo.png "Nighthawk Logo")
+![Nighthawk Logo](./images/nighthawk-logo.png "Nighthawk Logo")
 
 
 Install Nighthawk (Docker)
@@ -18,6 +18,8 @@ Docker Image
 -------------
 
 Built in docker image.
+
+:warning: There is NO Nighthawk code in this repostory. You will need to give this role a zip file that contains the Nighthawk C2 code. You can buy Nighthawk at [MDSec](https://www.mdsec.co.uk/nighthawk/) :warning:
 
 Role Variables
 --------------

@@ -1,0 +1,28 @@
+galaxy_info:
+  role_name: nighthawk_docker
+  author: warhorse
+  description: Install Nighthawk in Docker
+  company: Warhorse
+
+  issue_tracker_url: https://github.com/warhorse/ansible-role-nighthawk-docker/issues
+
+  license: BSD-3-Clause
+
+  min_ansible_version: 2.1
+
+  platforms:
+    - name: Debian
+      versions:
+        - all
+    - name: Ubuntu
+      versions:
+        - all
+
+  galaxy_tags:
+    - security
+    - c2
+    - Command & Control
+
+dependencies:
+  - geerlingguy.docker
+  - geerlingguy.pip
