@@ -1,0 +1,9 @@
+---
+- name: Update apt
+  apt:
+    name: unzip
+    update_cache: yes
+
+- name: Install pydocker
+  pip:
+    name: docker

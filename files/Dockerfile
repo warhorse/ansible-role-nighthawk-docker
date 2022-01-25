@@ -1,0 +1,13 @@
+FROM python:2
+
+RUN apt-get -y update && apt-get -y dist-upgrade && apt-get clean
+RUN apt-get install -y tmux curl build-essential python2-dev
+
+RUN pip install falcon waitress requests pycrypto pefile ecdsa
+
+COPY ./docker-entrypoint.sh /opt/
+RUN chmod +x /opt/docker-entrypoint.sh
+
+WORKDIR /nighthawk
+
+ENTRYPOINT ["/opt/docker-entrypoint.sh"]

@@ -1,0 +1,58 @@
+---
+- name: Ensures nighthawk dir exists
+  file:
+    path: '{{ item }}'
+    state: directory
+  with_items:
+  - '{{ nighthawk_dir }}'
+  - '{{ nighthawk_dir }}/data'
+
+- name: Copy Dockerfile
+  copy:
+    remote_src: "no"
+    src: "files/{{ item }}"
+    dest: "{{ nighthawk_dir }}/{{ item }}"
+    owner: 1000
+    group: 1000
+    mode: 0770
+  with_items:
+  - Dockerfile
+  - docker-entrypoint.sh
+
+- name: Copy Nighthawk Files
+  ansible.builtin.unarchive:
+    src: "{{ nighthawk_zip }}"
+    dest: "{{ nighthawk_dir }}/data"
+    remote_src: no
+
+- name: Build Nighthawk image
+  docker_image:
+    build:
+      path: "{{ nighthawk_dir }}"
+      pull: yes
+    name: nighthawk
+    source: build
+
+- name: Nighthawk
+  docker_container:
+    name: "{{ nighthawk_container_name }}"
+    image: "nighthawk"
+    pull: no
+    privileged: true
+    state: started
+    hostname: "{{ nighthawk_hostname }}"
+    restart_policy: unless-stopped
+    published_ports: "{{ nighthawk_ports }}"
+    labels: '{{ nighthawk_docker_labels }}'
+    volumes:
+     - "{{ nighthawk_dir }}/data:{{ nighthawk_data_dir }}"
+    env:
+      NHCAMP: "{{ nighthawk_campaign }}"
+      NHUSER: "{{ nighthawk_username }}"
+      NHPASS: "{{ nighthawk_password }}"
+      NHHOST: "{{ nighthawk_host }}"
+      NHPORT: "{{ nighthawk_port }}"
+      OPENSSL_BINARY: "/bin/openssl"
+    networks:
+      - name: '{{ nighthawk_docker_network }}'
+    purge_networks: true

@@ -1,0 +1,5 @@
+---
+- name: restart nighthawk
+  docker_container:
+    name: "{{ nighthawk_container_name }}"
+    restart: yes

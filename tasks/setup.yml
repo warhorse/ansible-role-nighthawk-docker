@@ -1,0 +1,8 @@
+- name: 'setup : create Nighthawk docker network'
+  become: true
+  docker_network:
+    name: '{{ nighthawk_docker_network }}'
+    ipam_config:
+      - subnet: '{{ nighthawk_network_ipam_subnet }}'
+        gateway: '{{ nighthawk_network_ipam_gateway }}'
+        iprange: '{{ nighthawk_network_ipam_iprange }}'

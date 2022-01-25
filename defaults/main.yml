@@ -1,0 +1,33 @@
+---
+nighthawk_hostname: "nighthawk"
+nighthawk_container_name: "nighthawk"
+nighthawk_username: "operator"
+nighthawk_password: "password"
+nighthawk_campaign: "campaign"
+nighthawk_zip: "nighthawk.zip"
+nighthawk_port: "8888"
+nighthawk_host: "0.0.0.0"
+
+nighthawk_docker_labels: {}
+nighthawk_docker_image: "nighthawk"
+nighthawk_docker_network: "nighthawk"
+nighthawk_network_ipam_temp: "{{ nighthawk_network_ipam | default({}) }}"
+nighthawk_network_ipam_subnet: "{{
+  nighthawk_network_ipam_temp.subnet
+  | default('172.16.1.0/24')
+}}"
+nighthawk_network_ipam_gateway: "{{
+  nighthawk_network_ipam_temp.gateway
+  | default('172.16.1.1')
+}}"
+nighthawk_network_ipam_iprange: "{{
+  nighthawk_network_ipam_temp.iprange
+  | default('172.16.1.0/24')
+}}"
+
+nighthawk_dir: '/opt/docker/nighthawk'
+nighthawk_data_dir: '/nighthawk'
+nighthawk_ports:
+  - "127.0.0.1:8888:8888"
+  - "0.0.0.0:443:443"
+  - "0.0.0.0:80:80"
