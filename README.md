@@ -1,9 +1,9 @@
 Ansible Nighthawk (Docker)
 =========
 [![CI](https://github.com/warhorse/ansible-role-nighthawk-docker/workflows/CI/badge.svg?event=push)](https://github.com/warhorse/ansible-role-nighthawk-docker/actions?query=workflow%3ACI)
-[![warhorse.nighthawk_docker](https://img.shields.io/ansible/role/55904)](https://galaxy.ansible.com/warhorse/nighthawk_docker)
-[![warhorse.nighthawk_docker](https://img.shields.io/ansible/quality/55904)](https://galaxy.ansible.com/warhorse/nighthawk_docker)
-[![warhorse.nighthawk_docker](https://img.shields.io/ansible/role/d/55904)](https://galaxy.ansible.com/warhorse/nighthawk_docker)
+[![warhorse.nighthawk_docker](https://img.shields.io/ansible/role/57696)](https://galaxy.ansible.com/warhorse/nighthawk_docker)
+[![warhorse.nighthawk_docker](https://img.shields.io/ansible/quality/57696)](https://galaxy.ansible.com/warhorse/nighthawk_docker)
+[![warhorse.nighthawk_docker](https://img.shields.io/ansible/role/d/57696)](https://galaxy.ansible.com/warhorse/nighthawk_docker)
 ![License](https://img.shields.io/github/license/warhorse/ansible-role-nighthawk-docker)
 ![Commit](https://img.shields.io/github/last-commit/warhorse/ansible-role-nighthawk-docker)
 
@@ -19,7 +19,7 @@ Docker Image
 
 Built in docker image.
 
-:warning: There is NO Nighthawk code in this repostory. You will need to give this role a zip file that contains the Nighthawk C2 code. You can buy Nighthawk at [MDSec](https://www.mdsec.co.uk/nighthawk/) :warning:
+:warning: There is NO Nighthawk code in this git repository. You will need to give this role a zip file that contains the Nighthawk C2 code. You can buy Nighthawk at [MDSec](https://www.mdsec.co.uk/nighthawk/) :warning:
 
 Role Variables
 --------------
