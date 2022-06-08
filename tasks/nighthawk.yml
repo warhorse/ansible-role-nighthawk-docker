@@ -7,10 +7,10 @@
   - '{{ nighthawk_dir }}'
   - '{{ nighthawk_dir }}/data'
 
+
 - name: Copy Dockerfile
-  copy:
-    remote_src: "no"
-    src: "files/{{ item }}"
+  template:
+    src: "{{ item }}.j2"
     dest: "{{ nighthawk_dir }}/{{ item }}"
     owner: 1000
     group: 1000
@@ -19,17 +19,24 @@
   - Dockerfile
   - docker-entrypoint.sh
 
+- name: Check if nighhawk folder is emtpy
+  find:
+    paths: '{{ nighthawk_dir }}/data'
+  register: filesFound
+
 - name: Copy Nighthawk Files
   ansible.builtin.unarchive:
     src: "{{ nighthawk_zip }}"
     dest: "{{ nighthawk_dir }}/data"
     remote_src: no
+  when: filesFound.examined == 0
 
 - name: Build Nighthawk image
   docker_image:
     build:
       path: "{{ nighthawk_dir }}"
-      pull: yes
+      pull: no
+      nocache: yes
     name: nighthawk
     source: build
 
@@ -46,6 +53,7 @@
     labels: '{{ nighthawk_docker_labels }}'
     volumes:
      - "{{ nighthawk_dir }}/data:{{ nighthawk_data_dir }}"
+     - /etc/localtime:/etc/localtime:ro
     env:
       NHCAMP: "{{ nighthawk_campaign }}"
       NHUSER: "{{ nighthawk_username }}"
@@ -53,6 +61,7 @@
       NHHOST: "{{ nighthawk_host }}"
       NHPORT: "{{ nighthawk_port }}"
       OPENSSL_BINARY: "/bin/openssl"
+      NIGHTHAWK_INPUT: "{{ nighthawk_api_input }}"
     networks:
       - name: '{{ nighthawk_docker_network }}'
     purge_networks: true
